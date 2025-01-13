@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .typing-text {
+            font-size: 22px;
+            font-weight: 500;
+            max-width: 100%;
+            white-space: pre-wrap; 
+            word-break: break-word;
+            text-align: center;
+            color: #5a3e36;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .typing-text {
+                font-size: 18px;
+            }
+        }
+
+        audio {
+            display: none;
+        }
+
+        #suprise-button {
+            display: none;
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 22px;
+            background: linear-gradient(135deg, #f06, #ff9);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #suprise-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        #suprise-button:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <img src="YourImg.jpg" alt="Foto"> 
+    <div class="typing-text" id="typing"></div>
+
+    <audio id="background-music" autoplay loop>
+        <source src="Backsound.mp3" type="audio/mpeg"> 
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Tombol Surprise Modern -->
+    <button id="suprise-button" onclick="location.href='Flowers.html'">
+        🎁 Surprise 🎉
+    </button>
+
+    <script>
+        const texts = [
+            "Ciee yang hari ini ultah...",
+            "Selamat ulang tahun Nilna Maflahatul Lizama🎉",
+            "Semoga di tahun dan bulan ini",
+            "Allah mewujudkan semua doa doamu yang belum terwujud",
+            "Dan semoga di tahun ini",
+            "Kamu menjadi lebih baik dari sebelumnya",
+            "Untuk kamuuu",
+            "Ngaji dan kuliahnya lebih semangat lagi yahhh",
+            "Jangan ngantuk terus wkwk 😄",
+            "Maaf ya kalau sering memperhatikanmu",
+            "Soalnya kamu manis banget ✨",
+        ];
+
+        let index = 0;
+        const typingElement = document.getElementById('typing');
+        const delayBetweenTexts = 2000;
+        const surpriseButton = document.getElementById('suprise-button');
+
+        function showText() {
+            if (index < texts.length) {
+                const paragraph = document.createElement('p');
+                paragraph.textContent = texts[index];
+                paragraph.style.animation = 'fadeIn 2s ease-in-out';
+                typingElement.appendChild(paragraph);
+
+                index++;
+                setTimeout(showText, delayBetweenTexts);
+            } else {
+                surpriseButton.style.display = 'block';
+            }
+        }
+
+        showText();
+    </script>
+
+</body>
+</html>
